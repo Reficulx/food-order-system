@@ -7,7 +7,7 @@ const Header = (props) => {
   return <React.Fragment>
     <header className={classes.header}>
       <h1>Happy Meals</h1>
-      <HeaderCartButton />
+      <HeaderCartButton onClick={props.onShowingCart} />
     </header>
     <div className={classes['main-image']}>
       {/*use url if its from an online database, but use the following for a local image*/}
