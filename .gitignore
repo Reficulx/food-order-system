@@ -4,6 +4,9 @@
 .idea
 .idea/*
 
+# local dev environment variables
+.env.development.local
+
 # dependencies
 /node_modules
 /.pnp
