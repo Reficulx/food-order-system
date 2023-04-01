@@ -35,10 +35,15 @@ const Checkout = (props) => {
     const formIsValid = isNameInputValid && isStreetInputValid && isCityInputValid && isPostalInputValid;
 
     if (!formIsValid) {
-
       return;
     }
     // Submit cart data
+    props.onConfirm({
+      name: nameInput,
+      street: streetInput,
+      city: cityInput,
+      postal: postalInput
+    });
   };
 
   return (

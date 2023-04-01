@@ -22,6 +22,16 @@ const Cart = (props) => {
     setIsCheckout(true);
   };
 
+  const submitOrderHandler = (userData) => {
+    fetch(process.env.REACT_APP_BACKEND_URL + "orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: context.items
+      }),
+    });
+  };
+
   // Remark: use .bind() to make sure the bound parameter is executed when the function is called
   const cartItems = <ul className={classes['cart-items']}>
     {context.items.map(item => (
@@ -40,7 +50,7 @@ const Cart = (props) => {
       <span>Total Amount</span>
       <span>{totalAmount}</span>
     </div>
-    {isCheckout && <Checkout onCancel={props.onHidingCart} onConfirm={props.onHidingCart} />}
+    {isCheckout && <Checkout onConfirm={submitOrderHandler} onCancel={props.onHidingCart} />}
     {!isCheckout && modalActionsComponent}
   </Modal>
 };
